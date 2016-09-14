@@ -1,5 +1,5 @@
 /*
- * Overchan Android (Meta Imageboard Client)
+ * Everychan Android (Meta Imageboard Client)
  * Copyright (C) 2014-2016  miku-nyan <https://github.com/miku-nyan>
  *     
  * This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ public class CustomThemeListActivity extends ListActivity {
     
     private static final String TAG = "CustomThemeListActivity";
     
-    private static final String URL_PATH = "https://raw.githubusercontent.com/miku-nyan/Overchan-Themes/master/themes/";
+    private static final String URL_PATH = "https://raw.githubusercontent.com/miku-nyan/Everychan-Themes/master/themes/";
     private static final String URL_INDEX = URL_PATH + "index.json";
     
     private ApplicationSettings settings;

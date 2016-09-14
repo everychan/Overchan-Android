@@ -1,5 +1,5 @@
 /*
- * Overchan Android (Meta Imageboard Client)
+ * Everychan Android (Meta Imageboard Client)
  * Copyright (C) 2014-2016  miku-nyan <https://github.com/miku-nyan>
  *
  * This program is free software: you can redistribute it and/or modify

@@ -1,15 +1,15 @@
-## Overchan Android
+## Everychan Android
 
-Overchan Android (Meta Imageboard Client) is an application for browsing imageboards.
+Everychan Android (Meta Imageboard Client) is an application for browsing imageboards.
 
-[Website](http://miku-nyan.github.io/Overchan-Android/)  
-[Releases](https://github.com/miku-nyan/Overchan-Android/releases)  
-[Google Play](https://play.google.com/store/apps/details?id=nya.miku.overchan) (without imageboards list)  
+[Website](http://miku-nyan.github.io/Everychan-Android/)
+[Releases](https://github.com/miku-nyan/Everychan-Android/releases)
+[Google Play](https://play.google.com/store/apps/details?id=nya.miku.Everychan) (without imageboards list)
 [F-Droid](https://f-droid.org/repository/browse/?fdid=nya.miku.wishmaster)  
 [Version for ARC Runtime](https://yadi.sk/d/h_71bJRQjcdNm) (doesn't support [SO_KEEPALIVE](https://code.google.com/p/chromium/issues/detail?id=384940))  
 
-[Supported Imageboards](https://github.com/miku-nyan/Overchan-Android/blob/master/Imageboards.md)  
-[Custom Themes](https://github.com/miku-nyan/Overchan-Themes)
+[Supported Imageboards](https://github.com/miku-nyan/Everychan-Android/blob/master/Imageboards.md)
+[Custom Themes](https://github.com/miku-nyan/Everychan-Themes)
 
 ## Building Source Code
 
@@ -26,7 +26,7 @@ Open the source code directory and run (in the command line):
 
 `ant -Dsdk.dir=/path/to/android-sdk -Dndk.dir=/path/to/android-ndk debug`
 
-The .apk file (`bin/Overchan-debug.apk`) will be signed with the debug key.
+The .apk file (`bin/Everychan-debug.apk`) will be signed with the debug key.
 
 *Note for Windows platforms:*  
 NDK path cannot contain any spaces but you can use the short name of the path (example: `C:\Program Files` → `C:\PROGRA~1`). The short directory name can be found using `dir /x` (example: `dir /x c:\`)
@@ -41,4 +41,4 @@ You may use Android Studio/IntelliJ IDEA at your own risk. The gradle build scri
 
 ## License
 
-Overchan Android is licensed under the [GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt).
+Everychan Android is licensed under the [GPLv3](http://www.gnu.org/licenses/gpl-3.0.txt).

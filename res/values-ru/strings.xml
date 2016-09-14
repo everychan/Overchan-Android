@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  
-Overchan Android (Meta Imageboard Client)
+Everychan Android (Meta Imageboard Client)
 Copyright (C) 2014-2016  miku-nyan <https://github.com/miku-nyan>
 
 This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <resources>
-    <string name="app_name">Overchan</string>
+    <string name="app_name">Everychan</string>
     
     <string name="drawer_open">Открыть панель</string>
     <string name="drawer_close">Закрыть панель</string>
@@ -396,7 +396,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="ssl_certificates_title">Сертификаты</string>
     <string name="ssl_certificate_delete">Удалить</string>
     
-    <string name="crash_dialog_title">Overchan - сбой</string>
+    <string name="crash_dialog_title">Everychan - сбой</string>
     <string name="crash_dialog_text">Непредвиденная ошибка привела к вынужденной остановке приложения.
         Пожалуйста, помогите исправить её, пришлите отчет об ошибке - для этого нажмите OK.</string>
     <string name="crash_dialog_comment_prompt">Здесь можно добавить ваши замечания о проблеме:</string>
@@ -565,7 +565,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="pref_clear_cache_title">Очистить кэш</string>
     <string name="pref_clear_cache_summary">%.1f MБ</string>
     <string name="pref_clear_cache_confirmation">Вы действительно хотите очистить кэш?</string>
-    <string name="pref_about_version_title">Overchan Android</string>
+    <string name="pref_about_version_title">Everychan Android</string>
     <string name="pref_about_license_title">Лицензия</string>
     <string name="pref_about_license_summary">GPLv3</string>
     <string name="pref_download_dir_title">Директория загрузок</string>

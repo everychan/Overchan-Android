@@ -1,5 +1,5 @@
 /*
- * Overchan Android (Meta Imageboard Client)
+ * Everychan Android (Meta Imageboard Client)
  * Copyright (C) 2014-2016  miku-nyan <https://github.com/miku-nyan>
  *     
  * This program is free software: you can redistribute it and/or modify
@@ -60,17 +60,17 @@ public class Recaptcha2js extends InteractiveException {
                 "}" +
             "</script>" +
             "<script src=\"https://www.google.com/recaptcha/api.js\" async defer></script>" +
-            "<form action=\"" + FALLBACK_INTERCEPT + "\" method=\"GET\" id=\"_overchan_submitform\">" +
+            "<form action=\"" + FALLBACK_INTERCEPT + "\" method=\"GET\" id=\"_Everychan_submitform\">" +
                 "<div class=\"g-recaptcha\" data-sitekey=\"" + publicKey + "\" " +
                     (sToken != null && sToken.length() > 0 ? ("data-stoken=\"" + sToken + "\" ") : "") +
                     "data-callback=\"globalOnCaptchaEntered\"></div>" +
             "</form>" +
             "<script type=\"text/javascript\">" +
-                "function _overchan_add_fallback_submit() { " +
+                "function _Everychan_add_fallback_submit() { " +
                     "var element = document.createElement(\"input\"); " +
                     "element.setAttribute(\"type\", \"submit\"); " +
                     "element.setAttribute(\"value\", \"Submit\");" +
-                    "var foo = document.getElementById(\"_overchan_submitform\"); " +
+                    "var foo = document.getElementById(\"_Everychan_submitform\"); " +
                     "foo.appendChild(element); " +
                 "}" +
             "</script>";
@@ -132,7 +132,7 @@ public class Recaptcha2js extends InteractiveException {
                     @Override
                     public void onLoadResource(WebView view, String url) {
                         if (url.contains("/api/fallback?") && fallbackButtonAdded.compareAndSet(false, true)) {
-                            view.loadUrl("javascript:_overchan_add_fallback_submit()");
+                            view.loadUrl("javascript:_Everychan_add_fallback_submit()");
                         }
                         super.onLoadResource(view, url);
                     }

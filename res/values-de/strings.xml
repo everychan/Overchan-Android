@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  
-Overchan Android (Meta Imageboard Client)
+Everychan Android (Meta Imageboard Client)
 Copyright (C) 2014-2016  miku-nyan <https://github.com/miku-nyan>
 
 This program is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Overchan</string>
+    <string name="app_name">Everychan</string>
     
     <string name="drawer_open">Drawer öffnen</string>
     <string name="drawer_close">Drawer schließen</string>
@@ -388,7 +388,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="ssl_certificates_title">Zertifikate</string>
     <string name="ssl_certificate_delete">Löschen</string>
     
-    <string name="crash_dialog_title">Overchan ist abgestürzt</string>
+    <string name="crash_dialog_title">Everychan ist abgestürzt</string>
     <string name="crash_dialog_text">Ein unerwarteter Fehler ist aufgetreten, der
         zum Beenden der Anwendung führte. Helfen Sie diesen Fehler
         zu beheben, indem Sie per Tipp auf OK einen Fehlerbericht senden.</string>
@@ -441,7 +441,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="pref_cat_autoupdate">Auto-update</string>
     <string name="pref_cat_subscriptions">Tracking von Antworten</string>
     <string name="pref_cat_cache">Cache</string>
-    <string name="pref_cat_about">Über Overchan</string>
+    <string name="pref_cat_about">Über Everychan</string>
     <string name="pref_cat_proxy">Anschluss</string>
     <string name="pref_use_proxy">Proxy</string>
     <string name="pref_use_proxy_summary">HTTP Proxy verwenden</string>
@@ -557,7 +557,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="pref_clear_cache_title">Cache löschen</string>
     <string name="pref_clear_cache_summary">%.1f MB</string>
     <string name="pref_clear_cache_confirmation">Sind Sie sicher, dass Sie Cache löschen?</string>
-    <string name="pref_about_version_title">Overchan Android</string>
+    <string name="pref_about_version_title">Everychan Android</string>
     <string name="pref_about_license_title">Lizenz</string>
     <string name="pref_about_license_summary">GPLv3</string>
     <string name="pref_download_dir_title">Verzeichnis für Herunterladen</string>

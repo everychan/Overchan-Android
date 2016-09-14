@@ -1,5 +1,5 @@
 /*
- * Overchan Android (Meta Imageboard Client)
+ * Everychan Android (Meta Imageboard Client)
  * Copyright (C) 2014-2016  miku-nyan <https://github.com/miku-nyan>
  *     
  * This program is free software: you can redistribute it and/or modify
@@ -36,8 +36,8 @@ import android.widget.Toast;
 public class AppUpdatesChecker {
     private static final String TAG = "AppUpdatesChecker";
     
-    private static final String URL = "http://miku-nyan.github.io/Overchan-Android/data/version.json";
-    private static final String SITE_URL = "http://miku-nyan.github.io/Overchan-Android/dl.html";
+    private static final String URL = "http://miku-nyan.github.io/Everychan-Android/data/version.json";
+    private static final String SITE_URL = "http://miku-nyan.github.io/Everychan-Android/dl.html";
     
     public static void checkForUpdates(final Activity activity) {
         final CancellableTask task = new CancellableTask.BaseCancellableTask();
