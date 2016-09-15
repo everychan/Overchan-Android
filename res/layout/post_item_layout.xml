@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:textColor="?attr/postForeground"
             android:visibility="gone" />
         
-        <nya.miku.wishmaster.lib.JellyBeanSpanFixTextView
+        <com.nttec.everychan.lib.JellyBeanSpanFixTextView
             android:id="@+id/post_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -129,7 +129,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:layout_marginEnd="5dp"
             android:visibility="gone" />
         
-        <nya.miku.wishmaster.lib.ClickableLinksTextView
+        <com.nttec.everychan.lib.ClickableLinksTextView
             android:id="@+id/post_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,7 +162,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:layout_height="wrap_content"
         android:visibility="gone" />
     
-    <nya.miku.wishmaster.lib.JellyBeanSpanFixTextView
+    <com.nttec.everychan.lib.JellyBeanSpanFixTextView
         android:id="@+id/post_replies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

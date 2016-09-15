@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     android:minHeight="@dimen/tab_height"
     android:orientation="horizontal" >
     
-    <nya.miku.wishmaster.lib.DragGripView
+    <com.nttec.everychan.lib.DragGripView
         android:id="@+id/newtab_quickaccess_drag_handle" 
         android:layout_gravity="center"
         android:layout_width="wrap_content"

@@ -1,0 +1,109 @@
+/*
+ * Everychan Android (Meta Imageboard Client)
+ * Copyright (C) 2014-2016  miku-nyan <https://github.com/miku-nyan>
+ *     
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package com.nttec.everychan.ui.settings;
+
+import com.nttec.everychan.R;
+import com.nttec.everychan.api.interfaces.CancellableTask;
+import com.nttec.everychan.common.Async;
+import com.nttec.everychan.common.Logger;
+import com.nttec.everychan.http.client.ExtendedHttpClient;
+import com.nttec.everychan.http.streamer.HttpRequestModel;
+import com.nttec.everychan.http.streamer.HttpStreamer;
+import com.nttec.everychan.lib.org_json.JSONObject;
+import com.nttec.everychan.ui.tabs.UrlHandler;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.widget.Toast;
+
+public class AppUpdatesChecker {
+    private static final String TAG = "AppUpdatesChecker";
+    
+    private static final String URL = "http://miku-nyan.github.io/Everychan-Android/data/version.json";
+    private static final String SITE_URL = "http://miku-nyan.github.io/Everychan-Android/dl.html";
+    
+    public static void checkForUpdates(final Activity activity) {
+        final CancellableTask task = new CancellableTask.BaseCancellableTask();
+        final ProgressDialog progressDialog = new ProgressDialog(activity);
+        progressDialog.setMessage(activity.getString(R.string.app_update_checking));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                task.cancel();
+            }
+        });
+        progressDialog.show();
+        Async.runAsync(new Runnable() {
+            @Override
+            public void run() {
+                JSONObject response;
+                try {
+                    ExtendedHttpClient httpClient = new ExtendedHttpClient(null);
+                    HttpRequestModel request = HttpRequestModel.DEFAULT_GET;
+                    response = HttpStreamer.getInstance().getJSONObjectFromUrl(URL, request, httpClient, null, task, false);
+                } catch (Exception e) {
+                    response = null;
+                }
+                process(response);
+            }
+            private void process(final JSONObject result) {
+                if (task.isCancelled()) return;
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (task.isCancelled()) return;
+                        try {
+                            progressDialog.dismiss();
+                        } catch (Exception e) {
+                            Logger.e(TAG, e);
+                            return;
+                        }
+                        try {
+                            if (result == null) throw new Exception();
+                            int newVersion = result.getInt("versionCode");
+                            int currentVersion = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0).versionCode;
+                            if (newVersion > currentVersion) {
+                                String newVersionName = result.getString("description");
+                                DialogInterface.OnClickListener onClickYes = new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        UrlHandler.launchExternalBrowser(activity, SITE_URL);
+                                    }
+                                };
+                                new AlertDialog.Builder(activity).
+                                        setTitle(R.string.app_update_update_available).
+                                        setMessage(activity.getString(R.string.app_update_update_dialog_text, newVersionName)).
+                                        setPositiveButton(android.R.string.yes, onClickYes).
+                                        setNegativeButton(android.R.string.no, null).
+                                        show();
+                            } else {
+                                Toast.makeText(activity, R.string.app_update_update_not_required, Toast.LENGTH_LONG).show();
+                            }
+                        } catch (Exception e) {
+                            Logger.e(TAG, e);
+                            Toast.makeText(activity, R.string.app_update_update_error, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+        });
+    }
+}

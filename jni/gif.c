@@ -445,7 +445,7 @@ static void setMetaData(int width, int height, int ImageCount, int errorCode,
 		return;
 
 	jclass exClass = (*env)->FindClass(env,
-			"nya/miku/wishmaster/lib/gifdrawable/GifIOException");
+			"com/nttec/everychan/lib/gifdrawable/GifIOException");
 
 	if (exClass == NULL)
 		return;
@@ -544,7 +544,7 @@ static GifInfo* open(GifFileType* GifFileIn, int Error, long startPos,
 }
 
 JNIEXPORT jlong JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openFile(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_openFile(JNIEnv * env, jclass class,
 		jintArray metaData, jstring jfname, jboolean justDecodeMetaData)
 {
 	if (jfname == NULL)
@@ -569,7 +569,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openFile(JNIEnv * env, jcla
 }
 
 JNIEXPORT jlong JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openByteArray(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_openByteArray(JNIEnv * env, jclass class,
 		jintArray metaData, jbyteArray bytes, jboolean justDecodeMetaData)
 {
 	ByteArrayContainer* container = malloc(sizeof(ByteArrayContainer));
@@ -598,7 +598,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openByteArray(JNIEnv * env,
 }
 
 JNIEXPORT jlong JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openDirectByteBuffer(JNIEnv * env,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_openDirectByteBuffer(JNIEnv * env,
 		jclass class, jintArray metaData, jobject buffer, jboolean justDecodeMetaData)
 {
 	jbyte* bytes = (*env)->GetDirectBufferAddress(env, buffer);
@@ -636,7 +636,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openDirectByteBuffer(JNIEnv
 }
 
 JNIEXPORT jlong JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openStream(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_openStream(JNIEnv * env, jclass class,
 		jintArray metaData, jobject stream, jboolean justDecodeMetaData)
 {
 	jclass streamCls = (*env)->NewGlobalRef(env,
@@ -684,7 +684,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openStream(JNIEnv * env, jc
 }
 
 JNIEXPORT jlong JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_openFd(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_openFd(JNIEnv * env, jclass class,
 		jintArray metaData, jobject jfd, jlong offset, jboolean justDecodeMetaData)
 {
 	jclass fdClass = (*env)->GetObjectClass(env, jfd);
@@ -889,7 +889,7 @@ static void getBitmap(argb* bm, GifInfo* info)
 }
 
 JNIEXPORT void JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_reset(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_reset(JNIEnv * env, jclass class,
 		jlong gifInfo)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -899,7 +899,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_reset(JNIEnv * env, jclass 
 }
 
 JNIEXPORT void JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_setSpeedFactor(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_setSpeedFactor(JNIEnv * env, jclass class,
 		jlong gifInfo, jfloat factor)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -909,7 +909,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_setSpeedFactor(JNIEnv * env
 }
 
 JNIEXPORT void JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_seekToTime(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_seekToTime(JNIEnv * env, jclass class,
 		jlong gifInfo, jint desiredPos, jintArray jPixels)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -956,7 +956,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_seekToTime(JNIEnv * env, jc
 }
 
 JNIEXPORT void JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_seekToFrame(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_seekToFrame(JNIEnv * env, jclass class,
 		jlong gifInfo, jint desiredIdx, jintArray jPixels)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -993,7 +993,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_seekToFrame(JNIEnv * env, j
 }
 
 JNIEXPORT jboolean JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_renderFrame(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_renderFrame(JNIEnv * env, jclass class,
 		jintArray jPixels, jlong gifInfo, jintArray metaData)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -1054,7 +1054,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_renderFrame(JNIEnv * env, j
 }
 
 JNIEXPORT void JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_free(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_free(JNIEnv * env, jclass class,
 		jlong gifInfo)
 {
 	if (gifInfo == (jlong)(intptr_t) NULL)
@@ -1104,7 +1104,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_free(JNIEnv * env, jclass c
 }
 
 JNIEXPORT jstring JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getComment(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_getComment(JNIEnv * env, jclass class,
 		jlong gifInfo)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -1114,7 +1114,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getComment(JNIEnv * env, jc
 }
 
 JNIEXPORT jint JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getLoopCount(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_getLoopCount(JNIEnv * env, jclass class,
 		jlong gifInfo)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -1124,7 +1124,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getLoopCount(JNIEnv * env, 
 }
 
 JNIEXPORT jint JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getDuration(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_getDuration(JNIEnv * env, jclass class,
 		jlong gifInfo)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -1138,7 +1138,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getDuration(JNIEnv * env, j
 }
 
 JNIEXPORT jint JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getCurrentPosition(JNIEnv * env,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_getCurrentPosition(JNIEnv * env,
 		jclass class, jlong gifInfo)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -1159,7 +1159,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getCurrentPosition(JNIEnv *
 }
 
 JNIEXPORT void JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_saveRemainder(JNIEnv * env, jclass class,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_saveRemainder(JNIEnv * env, jclass class,
 		jlong gifInfo)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -1169,7 +1169,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_saveRemainder(JNIEnv * env,
 }
 
 JNIEXPORT void JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_restoreRemainder(JNIEnv * env,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_restoreRemainder(JNIEnv * env,
 		jclass class, jlong gifInfo)
 {
 	GifInfo* info =(GifInfo*)(intptr_t) gifInfo;
@@ -1180,7 +1180,7 @@ Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_restoreRemainder(JNIEnv * e
 }
 
 JNIEXPORT jlong JNICALL
-Java_nya_miku_wishmaster_lib_gifdrawable_GifDrawable_getAllocationByteCount(JNIEnv * env,
+Java_com_nttec_everychan_lib_gifdrawable_GifDrawable_getAllocationByteCount(JNIEnv * env,
 		jclass class, jlong gifInfo)
 {
 	GifInfo* info = (GifInfo*)(intptr_t) gifInfo;

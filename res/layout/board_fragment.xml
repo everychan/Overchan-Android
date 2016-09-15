@@ -79,7 +79,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:layout_height="0dp"
         android:layout_weight="1" >
 
-        <nya.miku.wishmaster.lib.pullable_layout.SwipeRefreshLayout
+        <com.nttec.everychan.lib.pullable_layout.SwipeRefreshLayout
             android:id="@+id/board_pullable_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
@@ -93,7 +93,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 android:dividerHeight="4dp"
                 android:scrollingCache="false"
                 android:animationCache="false" />
-        </nya.miku.wishmaster.lib.pullable_layout.SwipeRefreshLayout>
+        </com.nttec.everychan.lib.pullable_layout.SwipeRefreshLayout>
         
         <include
             android:id="@+id/board_loading"
