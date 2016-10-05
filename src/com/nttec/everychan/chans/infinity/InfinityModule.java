@@ -99,7 +99,7 @@ public class InfinityModule extends AbstractVichanModule {
     private String torCaptchaCookie = null;
     private boolean needNewthreadCaptcha = false;
     private String newThreadCaptchaId = null;
-    
+
     
     public InfinityModule(SharedPreferences preferences, Resources resources) {
         super(preferences, resources);
@@ -261,8 +261,17 @@ public class InfinityModule extends AbstractVichanModule {
     
     @Override
     public CaptchaModel getNewCaptcha(String boardName, String threadNumber, ProgressListener listener, CancellableTask task) throws Exception {
+
+        String url = getUsingUrl() + "settings.php?board=" + boardName;
+        JSONObject json;
+        try {
+            json = downloadJSONObject(url, false, listener, task);
+        } catch (Exception e) {
+            json = new JSONObject();
+        }
+
         if (needTorCaptcha) {
-            String url = getUsingUrl() + "dnsbls_bypass.php";
+            url = getUsingUrl() + "dnsbls_bypass.php";
             String response =
                     HttpStreamer.getInstance().getStringFromUrl(url, HttpRequestModel.DEFAULT_GET, httpClient, listener, task, false);
             Matcher base64Matcher = CAPTCHA_BASE64.matcher(response);
@@ -276,8 +285,9 @@ public class InfinityModule extends AbstractVichanModule {
                 return captcha;
             }
         }
+        needNewthreadCaptcha = ((threadNumber==null&& (json.getBoolean("new_thread_capt")))||(Boolean)json.getJSONObject("captcha").get("enabled"));
         if (needNewthreadCaptcha) {
-            String url = getUsingUrl() + "8chan-captcha/entrypoint.php?mode=get&extra=abcdefghijklmnopqrstuvwxyz&nojs=true";
+            url = getUsingUrl() + "8chan-captcha/entrypoint.php?mode=get&extra=abcdefghijklmnopqrstuvwxyz&nojs=true";
             HttpRequestModel request = HttpRequestModel.builder().setGET().
                     setCustomHeaders(new Header[] { new BasicHeader(HttpHeaders.CACHE_CONTROL, "max-age=0") }).build();
             String response = HttpStreamer.getInstance().getStringFromUrl(url, request, httpClient, listener, task, false);
@@ -317,7 +327,7 @@ public class InfinityModule extends AbstractVichanModule {
     public String sendPost(SendPostModel model, ProgressListener listener, CancellableTask task) throws Exception {
         if (needTorCaptcha) checkCaptcha(model.captchaAnswer, task);
         if (task != null && task.isCancelled()) throw new InterruptedException("interrupted");
-        String url = getUsingUrl() + "post.php";
+        String url =  "https://sys.8ch.net/post.php";
         ExtendedMultipartBuilder postEntityBuilder = ExtendedMultipartBuilder.create().setDelegates(listener, task).
                 addString("name", model.name).
                 addString("email", model.sage ? "sage" : model.email).
@@ -329,7 +339,7 @@ public class InfinityModule extends AbstractVichanModule {
         if (model.custommark) postEntityBuilder.addString("spoiler", "on");
         postEntityBuilder.addString("password", TextUtils.isEmpty(model.password) ? getDefaultPassword() : model.password);
         if (model.attachments != null) {
-            String[] images = new String[] { "file", "file2", "file3", "file4", "file5" };
+            String[] images = new String[] { "file", "file1", "file2", "file3", "file4" };
             for (int i=0; i<model.attachments.length; ++i) {
                 postEntityBuilder.addFile(images[i], model.attachments[i], model.randomHash);
             }
@@ -338,7 +348,7 @@ public class InfinityModule extends AbstractVichanModule {
             postEntityBuilder.addString("captcha_text", model.captchaAnswer).addString("captcha_cookie", newThreadCaptchaId);
             needNewthreadCaptcha = false;
         }
-        
+
         UrlPageModel refererPage = new UrlPageModel();
         refererPage.chanName = getChanName();
         refererPage.boardName = model.boardName;

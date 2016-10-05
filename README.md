@@ -2,15 +2,6 @@
 
 Everychan Android (Meta Imageboard Client) is an application for browsing imageboards.
 
-[Website](http://miku-nyan.github.io/Everychan-Android/)
-[Releases](https://github.com/miku-nyan/Everychan-Android/releases)
-[Google Play](https://play.google.com/store/apps/details?id=com.nttec.Everychan) (without imageboards list)
-[F-Droid](https://f-droid.org/repository/browse/?fdid=com.nttec.everychan)
-[Version for ARC Runtime](https://yadi.sk/d/h_71bJRQjcdNm) (doesn't support [SO_KEEPALIVE](https://code.google.com/p/chromium/issues/detail?id=384940))  
-
-[Supported Imageboards](https://github.com/miku-nyan/Everychan-Android/blob/master/Imageboards.md)
-[Custom Themes](https://github.com/miku-nyan/Everychan-Themes)
-
 ## Building Source Code
 
 ### Dependencies
