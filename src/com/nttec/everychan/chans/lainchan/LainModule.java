@@ -36,7 +36,6 @@ public class LainModule extends AbstractVichanModule {
     private static final String CHAN_NAME = "lainchan.org";
     private static final SimpleBoardModel[] BOARDS = new SimpleBoardModel[] {
 
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "cyb", "cyberpunk", " ", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "tech", "consumer technology", " ", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "λ", "programming", " ", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "layer", "layer:03", " ", false),
