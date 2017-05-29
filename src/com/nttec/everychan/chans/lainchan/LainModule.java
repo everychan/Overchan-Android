@@ -35,19 +35,20 @@ import com.nttec.everychan.lib.org_json.JSONObject;
 public class LainModule extends AbstractVichanModule {
     private static final String CHAN_NAME = "lainchan.org";
     private static final SimpleBoardModel[] BOARDS = new SimpleBoardModel[] {
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "cyb", "cyberpunk", " ", false),
+
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "tech", "consumer technology", " ", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "λ", "programming", " ", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "layer", "layer:03", " ", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "zzz", "dream", "", false),
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "w", "weeb", "", false),
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "feels", "Feelings", "", false),
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "drg", "drugs 2.0", "", true),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "hum", "humanity", "", false),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "drg", "drugs 2.0", "", false),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "inter", "games and interactive Media", "", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "lit", "literature", "", false),
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "diy", "DIY & Electronics", "", false),
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "art", "ars gratia artis", "", false),
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "r", "random", " ", true),
-        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "f", "fileboard", " ", false),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "music", "music", "", false),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "diy", "diy & electronics", "", false),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "r", "random", " ", false),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "sec", "security", " ", false),
+        ChanModels.obtainSimpleBoardModel(CHAN_NAME, "vis", "visual media", " ", false),
         ChanModels.obtainSimpleBoardModel(CHAN_NAME, "q", "questions and complaints", "", false),
     };
     
