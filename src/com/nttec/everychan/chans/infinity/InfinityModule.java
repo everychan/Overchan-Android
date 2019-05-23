@@ -365,27 +365,7 @@ public class InfinityModule extends AbstractVichanModule {
         HttpResponseModel response = null;
         try {
             response = HttpStreamer.getInstance().getFromUrl(url, request, httpClient, listener, task);
-            if (response.statusCode == 200) {
-                Logger.d(TAG, "200 OK");
-                ByteArrayOutputStream output = new ByteArrayOutputStream(1024);
-                IOUtils.copyStream(response.stream, output);
-                String htmlResponse = output.toString("UTF-8");
-                if (htmlResponse.contains("<div class=\"ban\">")) {
-                    String error = "You are banned! ;_;";
-                    Matcher banReasonMatcher = BAN_REASON_PATTERN.matcher(htmlResponse);
-                    if (banReasonMatcher.find()) {
-                        error += "\nReason: " + banReasonMatcher.group(1);
-                    }
-                    throw new Exception(error);
-                }
-                return null;
-            } else if (response.statusCode == 303) {
-                for (Header header : response.headers) {
-                    if (header != null && HttpHeaders.LOCATION.equalsIgnoreCase(header.getName())) {
-                        return fixRelativeUrl(header.getValue());
-                    }
-                }
-            } else if (response.statusCode == 400) {
+            if (response.statusCode == 400 || response.statusCode == 200) {
                 ByteArrayOutputStream output = new ByteArrayOutputStream(1024);
                 IOUtils.copyStream(response.stream, output);
                 String htmlResponse = output.toString("UTF-8");
@@ -404,6 +384,21 @@ public class InfinityModule extends AbstractVichanModule {
                         if (error.contains("To post on 8chan over Tor, you must use the hidden service for security reasons."))
                             throw new Exception("To post on 8chan over Tor, you must use the onion domain.");
                         throw new Exception(error);
+                    }
+                } else if (htmlResponse.contains("<div class=\"ban\">")) {
+                    String error = "You are banned! ;_;";
+                    Matcher banReasonMatcher = BAN_REASON_PATTERN.matcher(htmlResponse);
+                    if (banReasonMatcher.find()) {
+                        error += "\nReason: " + banReasonMatcher.group(1);
+                    }
+                    throw new Exception(error);
+                } else {
+                    return null;
+                }
+            } else if (response.statusCode == 303) {
+                for (Header header : response.headers) {
+                    if (header != null && HttpHeaders.LOCATION.equalsIgnoreCase(header.getName())) {
+                        return fixRelativeUrl(header.getValue());
                     }
                 }
             }
